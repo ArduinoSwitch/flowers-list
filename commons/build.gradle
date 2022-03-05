@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+apply from: "../dependencies.gradle"
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "DEBUG", "true"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation supportLibs.ktxCore
+    implementation supportLibs.appCompat
+    implementation supportLibs.recyclerView
+
+    implementation supportLibs.fragment
+    implementation supportLibs.lifecycleRuntimeKtx
+    implementation supportLibs.lifecycleViewModel
+    implementation supportLibs.lifecycleRuntime
+    implementation supportLibs.lifecycleCommon
+    implementation supportLibs.lifecycleProcess
+
+    implementation supportLibs.navigationFragment
+    implementation supportLibs.navigationUi
+
+    implementation di.koin
+    implementation di.koinViewModel
+    implementation di.koinFragment
+    implementation di.koinScope
+
+    implementation libraries.timber
+    implementation libraries.materialDesign
+}

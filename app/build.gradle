@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
+
+apply from: "../dependencies.gradle"
 
 android {
     compileSdk 31
@@ -29,15 +33,50 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation project(":data")
+    implementation project(":domain")
+    implementation project(":commons")
+
+    implementation kotlinLibs.coroutinesAndroid
+    implementation kotlinLibs.kotlin
+    implementation kotlinLibs.kotlinStdLib
+    implementation kotlinLibs.coroutines
+    implementation kotlinLibs.coroutinesKtx
+
+    implementation supportLibs.ktxCore
+    implementation supportLibs.appCompat
+    implementation supportLibs.recyclerView
+
+    implementation supportLibs.fragment
+    implementation supportLibs.lifecycleRuntimeKtx
+    implementation supportLibs.lifecycleViewModel
+    implementation supportLibs.lifecycleRuntime
+    implementation supportLibs.lifecycleCommon
+    implementation supportLibs.lifecycleProcess
+
+    implementation supportLibs.navigationFragment
+    implementation supportLibs.navigationUi
+    implementation supportLibs.coil
+
+    implementation libraries.timber
+    implementation libraries.materialDesign
+
+    implementation di.koin
+    implementation di.koinViewModel
+    implementation di.koinFragment
+    implementation di.koinScope
+
+    testImplementation testing.jUnit
+    testImplementation testing.coroutinesTest
+    testImplementation testing.mockk
+    androidTestImplementation testing.jUnitAndroid
+    androidTestImplementation testing.espressoCore
 }

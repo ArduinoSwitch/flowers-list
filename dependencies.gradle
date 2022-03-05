@@ -1,0 +1,89 @@
+ext {
+    // Kotlin
+    def kotlinVersion = "1.4.31"
+    def coroutinesVersion = "1.4.2"
+    def kotlinxSerializationVersion = "1.0.1"
+    // DI
+    def koinVersion = "2.2.2"
+    // API - Square
+    def retrofitVersion = "2.9.0"
+    def loggingInterceptorVersion = "4.9.1"
+    def serializationConverterVersion = "0.8.0"
+    // AndroidX
+    def ktxCoreVersion = "1.3.2"
+    def appCompatVersion = "1.2.0"
+    def fragmentVersion = "1.3.0"
+    def recyclerViewVersion = "1.1.0"
+    def navigationVersion = "2.3.3"
+    def lifecycleVersion = "2.3.0"
+    // Google
+    def materialDesignVersion = "1.3.0"
+    // Other
+    def timberVersion = "4.7.1"
+    def coilVersion = "1.4.0"
+    // Test
+    def jUnitVersion = "4.13.2"
+    def jUnitAndroidVersion = "1.1.2"
+    def mockkVersion = "1.10.6"
+    def espressoVersion = "3.3.0"
+    // DataBase
+    def room = "2.4.0"
+    def datastore = "1.0.0-alpha05"
+
+    kotlinLibs = [
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            kotlinStdLib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            kotlinReflect : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
+            coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion",
+            coroutinesKtx : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion",
+            kotlinxSerialization : "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion",
+    ]
+
+    di = [
+            koin : "org.koin:koin-android:$koinVersion",
+            koinViewModel : "org.koin:koin-androidx-viewmodel:$koinVersion",
+            koinFragment : "org.koin:koin-androidx-fragment:$koinVersion",
+            koinScope : "org.koin:koin-androidx-scope:$koinVersion",
+    ]
+
+    database = [
+            roomRuntime : "androidx.room:room-runtime:$room",
+            roomCompiler : "androidx.room:room-compiler:$room",
+            roomKtx : "androidx.room:room-ktx:$room",
+            roomTest : "androidx.room:room-testing:$room",
+            datastorePreferences : "androidx.datastore:datastore-preferences:$datastore",
+    ]
+
+    supportLibs = [
+            ktxCore : "androidx.core:core-ktx:$ktxCoreVersion",
+            appCompat : "androidx.appcompat:appcompat:$appCompatVersion",
+            recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            fragment : "androidx.fragment:fragment:$fragmentVersion",
+            navigationFragment : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUi : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+            lifecycleViewModel : "androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion",
+
+            lifecycleRuntime : "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
+            lifecycleRuntimeKtx : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion",
+            lifecycleCommon : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            lifecycleProcess : "androidx.lifecycle:lifecycle-process:$lifecycleVersion",
+            coil : "io.coil-kt:coil:$coilVersion",
+    ]
+
+    libraries = [
+            retrofit : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitSerlialization : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$serializationConverterVersion",
+            loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            materialDesign : "com.google.android.material:material:$materialDesignVersion",
+            timber : "com.jakewharton.timber:timber:$timberVersion",
+    ]
+
+    testing = [
+            jUnit : "junit:junit:$jUnitVersion",
+            jUnitAndroid : "androidx.test.ext:junit:$jUnitAndroidVersion",
+            mockk : "io.mockk:mockk:$mockkVersion",
+            coroutinesTest : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion",
+            espressoCore : "androidx.test.espresso:espresso-core:$espressoVersion",
+    ]
+}
