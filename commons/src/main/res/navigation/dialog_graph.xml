@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_graph"
+    app:startDestination="@id/generic_dialog"
+    >
+
+    <dialog
+        android:id="@+id/generic_dialog"
+        android:name="com.setesh.commons.navigation.dialog.ui.GenericDialog"
+        android:label="MyDialog"
+        >
+        <argument
+            android:name="data"
+            app:argType="com.setesh.commons.navigation.dialog.DialogData"
+            />
+    </dialog>
+
+</navigation>

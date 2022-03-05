@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -20,6 +21,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "boolean", "DEBUG", "true"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -32,9 +36,24 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+    implementation supportLibs.ktxCore
+    implementation supportLibs.appCompat
+    implementation supportLibs.recyclerView
+
+    implementation supportLibs.fragment
+    implementation supportLibs.lifecycleRuntimeKtx
+    implementation supportLibs.lifecycleViewModel
+    implementation supportLibs.lifecycleRuntime
+    implementation supportLibs.lifecycleCommon
+    implementation supportLibs.lifecycleProcess
+
     implementation supportLibs.navigationFragment
     implementation supportLibs.navigationUi
 

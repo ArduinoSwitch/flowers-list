@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlinx-serialization'
 }
 
 apply from: "../dependencies.gradle"
@@ -35,8 +34,7 @@ android {
 }
 
 dependencies {
-    implementation kotlinLibs.kotlinxSerialization
-    implementation libraries.retrofit
-    implementation libraries.retrofitSerlialization
-    implementation libraries.loggingInterceptor
+    implementation project(":commons")
+    implementation kotlinLibs.coroutines
+    implementation di.koin
 }
