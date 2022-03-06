@@ -3,15 +3,16 @@ package com.setesh.flowers.feature.main.ui
 import android.os.Bundle
 import android.view.View
 import coil.load
-import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import com.setesh.commons.binding.list.GenericListAdapter
+import com.setesh.commons.binding.onClick
 import com.setesh.commons.binding.viewBinding
 import com.setesh.commons.ui.BaseFragment
 import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
 import com.setesh.flowers.databinding.FlowerItemBinding
 import com.setesh.flowers.databinding.MainFragmentBinding
+import com.setesh.flowers.feature.detail.ui.DetailArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment: BaseFragment(R.layout.main_fragment) {
@@ -40,6 +41,17 @@ class MainFragment: BaseFragment(R.layout.main_fragment) {
             crossfade(true)
             placeholder(R.drawable.local_florist_black_24dp)
             transformations(RoundedCornersTransformation())
+        }
+        root.onClick {
+            viewModel.onPhotoClick(
+                DetailArgs(
+                    description = item.description,
+                    width = item.width,
+                    height = item.height,
+                    likes = item.likes,
+                    fullUrl = item.urls.full,
+                )
+            )
         }
     }
 

@@ -16,4 +16,8 @@
     <!-- Main Screen Strings -->
     <string name="main_title">Listado de flores</string>
 
+    <!-- Detail Screen Strings -->
+    <string name="detail_screen_title">Detalle</string>
+    <string name="detail_size_placeholder">%d x %d</string>
+
 </resources>

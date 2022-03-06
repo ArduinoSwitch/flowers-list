@@ -9,6 +9,7 @@ import com.setesh.commons.ui.BaseViewModel
 import com.setesh.domain.photos.GetPhotosUseCaseT
 import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
+import com.setesh.flowers.feature.detail.ui.DetailArgs
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,5 +31,9 @@ class MainViewModel(
                 navigator.openDialog(DialogData.Informative(R.string.main_title, R.string.main_title))
             }
         }
+    }
+
+    fun onPhotoClick(detail: DetailArgs) {
+        navigator.goTo(MainFragmentDirections.navToDetail(detail))
     }
 }

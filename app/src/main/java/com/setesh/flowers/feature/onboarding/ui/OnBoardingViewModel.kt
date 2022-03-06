@@ -24,17 +24,18 @@ class OnBoardingViewModel(
             ),
             TabUiModel(R.string.on_boarding_introduce_title,
                 R.string.on_boarding_introduce_body,
-                R.drawable.local_florist_black_24dp
+                R.drawable.list_view
             ),
             TabUiModel(R.string.on_boarding_flower_detail_title,
                 R.string.on_boarding_flower_detail_body,
-                R.drawable.local_florist_black_24dp
+                R.drawable.detail_view
             ),
         )
 
     val tabPosition = MutableStateFlow(0)
     val backButtonVisible = tabPosition.map { it != 0 }
     val nextOrFinishText = tabPosition.map {
+        Timber.i("$it")
         if (it != 2) R.string.on_boarding_next else R.string.on_boarding_finish
     }
 
@@ -45,12 +46,12 @@ class OnBoardingViewModel(
     }
 
     fun onNextClick() {
-        if (tabPosition.value < 3) {
-            tabPosition.value = tabPosition.value + 1
-        }
         if (tabPosition.value == 2) {
             updateOnBoardStatus()
             navigator.goTo(OnBoardingFragmentDirections.navToMain())
+        }
+        if (tabPosition.value < 2) {
+            tabPosition.value = tabPosition.value + 1
         }
     }
 

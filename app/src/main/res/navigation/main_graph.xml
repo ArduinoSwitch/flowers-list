@@ -44,7 +44,29 @@
         android:name="com.setesh.flowers.feature.main.ui.MainFragment"
         android:label="Main Fragment"
         tools:layout="@layout/main_fragment"
-        />
+        >
+        <action
+            android:id="@+id/nav_to_detail"
+            app:destination="@id/detail_fragment"
+            >
+            <argument
+                android:name="detail"
+                app:argType="com.setesh.flowers.feature.detail.ui.DetailArgs"
+                />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.setesh.flowers.feature.detail.ui.DetailFragment"
+        android:label="Detail Fragment"
+        tools:layout="@layout/detail_fragment"
+        >
+        <argument
+            android:name="detail"
+            app:argType="com.setesh.flowers.feature.detail.ui.DetailArgs"
+            />
+    </fragment>
 
     <action
         android:id="@+id/open_dialog"
