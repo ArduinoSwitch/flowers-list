@@ -8,4 +8,8 @@
     <string name="on_boarding_introduce_body">Tienes un listado de flores</string>
     <string name="on_boarding_flower_detail_title">En detalle</string>
     <string name="on_boarding_flower_detail_body">Puedes entrar dentro de cada imagen para ver el detalle</string>
+    <string name="on_boarding_skip">SALTAR</string>
+    <string name="on_boarding_next">SIGUIENTE</string>
+    <string name="on_boarding_back">ATRAS</string>
+    <string name="on_boarding_finish">FINALIZAR</string>
 </resources>

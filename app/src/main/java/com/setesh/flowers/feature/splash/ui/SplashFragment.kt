@@ -12,6 +12,10 @@ import com.setesh.flowers.databinding.SplashFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
+private const val UPPER_LIMIT = 3L
+private const val LOWER_LIMIT = 0L
+private const val MILLISECONDS_FACTOR = 100
+
 class SplashFragment: BaseFragment(R.layout.splash_fragment) {
     private val binding: SplashFragmentBinding by viewBinding(SplashFragmentBinding::bind)
     override val viewModel: SplashViewModel by viewModel()
@@ -57,9 +61,9 @@ class SplashFragment: BaseFragment(R.layout.splash_fragment) {
         val animOne = AnimatorInflater.loadAnimator(requireContext(), R.animator.fade_in)
         val animTwo = AnimatorInflater.loadAnimator(requireContext(), R.animator.fade_in)
         val animThree = AnimatorInflater.loadAnimator(requireContext(), R.animator.fade_in)
-        var timeOne = Random.nextLong(0, 6) * 100
-        var timeTwo = Random.nextLong(0, 6) * 100
-        var timeThree = Random.nextLong(0, 6) * 100
+        var timeOne = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
+        var timeTwo = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
+        var timeThree = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
         a1.setTarget(columnOne)
         a2.setTarget(columnTwo)
         a3.setTarget(columnThree)
@@ -91,18 +95,18 @@ class SplashFragment: BaseFragment(R.layout.splash_fragment) {
             animThree.start()
         }
         animOne.doOnEnd {
-            timeOne = Random.nextLong(0, 6) * 100
+            timeOne = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
             it.startDelay = timeOne
 
             a1.start()
         }
         animTwo.doOnEnd {
-            timeTwo = Random.nextLong(0, 6) * 100
+            timeTwo = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
             it.startDelay = timeTwo
             a2.start()
         }
         animThree.doOnEnd {
-            timeThree = Random.nextLong(0, 6) * 100
+            timeThree = Random.nextLong(LOWER_LIMIT, UPPER_LIMIT) * MILLISECONDS_FACTOR
             it.startDelay = timeThree
             a3.start()
         }

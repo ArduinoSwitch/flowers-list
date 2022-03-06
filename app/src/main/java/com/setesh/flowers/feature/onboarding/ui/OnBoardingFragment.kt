@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.google.android.material.tabs.TabLayoutMediator
 import com.setesh.commons.binding.list.GenericListAdapter
+import com.setesh.commons.binding.onClick
 import com.setesh.commons.binding.viewBinding
 import com.setesh.commons.ui.BaseFragment
 import com.setesh.flowers.R
@@ -22,6 +23,11 @@ class OnBoardingFragment: BaseFragment(R.layout.on_boarding_fragment) {
     }
 
     private fun OnBoardingFragmentBinding.bind() {
+        back.bindIsVisible(viewModel.backButtonVisible)
+        next.bind(viewModel.nextOrFinishText)
+        skip.onClick { viewModel.onSkipClick() }
+        back.onClick { viewModel.onBackClick() }
+        next.onClick { viewModel.onNextClick() }
         val adapter = getViewPagerAdapter()
         with(viewPager) {
             this.adapter = adapter
@@ -29,6 +35,7 @@ class OnBoardingFragment: BaseFragment(R.layout.on_boarding_fragment) {
         }
         TabLayoutMediator(pagerIndicator, viewPager) { _, _ ->
         }.attach()
+        viewPager.bindRetrievePosition(viewModel.tabPosition)
     }
 
     private fun getViewPagerAdapter() = GenericListAdapter(

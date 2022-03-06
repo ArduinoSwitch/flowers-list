@@ -8,6 +8,22 @@ fun View.onClick(clickListener: (View) -> Unit) {
     setOnClickListener(clickListener)
 }
 
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+fun <T : View> T.showIf(condition: Boolean) {
+    if (condition) {
+        show()
+    } else {
+        hide()
+    }
+}
+
 fun TextView.efficientText(newText: CharSequence?) {
     val oldText = this.text
     if (newText == oldText || (newText == null && oldText.isEmpty())) {
