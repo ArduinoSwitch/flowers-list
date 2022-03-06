@@ -2,9 +2,15 @@ package com.setesh.flowers.feature.main.ui
 
 import android.os.Bundle
 import android.view.View
+import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import com.setesh.commons.binding.list.GenericListAdapter
 import com.setesh.commons.binding.viewBinding
 import com.setesh.commons.ui.BaseFragment
+import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
+import com.setesh.flowers.databinding.FlowerItemBinding
 import com.setesh.flowers.databinding.MainFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,6 +24,23 @@ class MainFragment: BaseFragment(R.layout.main_fragment) {
         binding.bind()
     }
 
-    private fun MainFragmentBinding.bind() {}
+    private fun MainFragmentBinding.bind() {
+        flowersRecyclerView.bindGrid(viewModel.flowersUiList, getFlowersAdapter(), 2)
+    }
+
+    private fun getFlowersAdapter() = GenericListAdapter(
+        getViewBinding = {parent, _ -> parent.viewBinding(FlowerItemBinding::inflate) },
+        areItemsSame = {oldItem, newItem -> oldItem == newItem },
+        onBind = {item: PhotoModel, binding, _ -> binding.bind(item)}
+    )
+
+    private fun FlowerItemBinding.bind(item: PhotoModel) {
+        text.text = item.description
+        image.load(item.urls.small) {
+            crossfade(true)
+            placeholder(R.drawable.local_florist_black_24dp)
+            transformations(RoundedCornersTransformation())
+        }
+    }
 
 }

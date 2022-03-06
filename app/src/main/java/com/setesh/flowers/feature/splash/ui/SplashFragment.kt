@@ -20,15 +20,28 @@ class SplashFragment: BaseFragment(R.layout.splash_fragment) {
     private val binding: SplashFragmentBinding by viewBinding(SplashFragmentBinding::bind)
     override val viewModel: SplashViewModel by viewModel()
     private val drawableList = listOf(
-        R.drawable.add_photo_alternate_black_24dp,
         R.drawable.collections_black_24dp,
-        R.drawable.image_black_24dp,
         R.drawable.landscape_black_24dp,
         R.drawable.local_florist_black_24dp,
         R.drawable.portrait_black_24dp,
         R.drawable.tonality_black_24dp,
         R.drawable.vrpano_black_24dp,
-        R.drawable.ic_photo_camera_back_black_24dp,
+        R.drawable.account_circle_black_24dp,
+        R.drawable.check_circle_black_24dp,
+        R.drawable.delete_black_24dp,
+        R.drawable.description_black_24dp,
+        R.drawable.done_black_24dp,
+        R.drawable.favorite_black_24dp,
+        R.drawable.favorite_border_black_24dp,
+        R.drawable.home_black_24dp,
+        R.drawable.info_black_24dp,
+        R.drawable.lock_black_24dp,
+        R.drawable.logout_black_24dp,
+        R.drawable.schedule_black_24dp,
+        R.drawable.search_black_24dp,
+        R.drawable.settings_black_24dp,
+        R.drawable.shopping_cart_black_24dp,
+        R.drawable.visibility_black_24dp,
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,5 +1,6 @@
 package com.setesh.commons.binding.binders
 
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.setesh.commons.binding.list.GenericListAdapter
@@ -17,6 +18,25 @@ interface ListBinders : BaseBinder {
             adapter.submitList(it)
         }
     }
+
+    fun <T> RecyclerView.bindGrid(
+        items: Flow<List<T>>,
+        adapter: GenericListAdapter<T, *>,
+        numberOfColumns: Int,
+    ) {
+        setupItem(adapter, numberOfColumns)
+        observe(items) {
+            adapter.submitList(it)
+        }
+    }
+}
+
+private fun RecyclerView.setupItem(
+    adapter: GenericListAdapter<*, *>,
+    numberOfRows: Int,
+) {
+    this.adapter = adapter
+    this.layoutManager = GridLayoutManager(context, numberOfRows)
 }
 
 private fun RecyclerView.setup(

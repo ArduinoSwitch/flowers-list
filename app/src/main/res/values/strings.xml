@@ -12,4 +12,8 @@
     <string name="on_boarding_next">SIGUIENTE</string>
     <string name="on_boarding_back">ATRAS</string>
     <string name="on_boarding_finish">FINALIZAR</string>
+
+    <!-- Main Screen Strings -->
+    <string name="main_title">Listado de flores</string>
+
 </resources>
