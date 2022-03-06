@@ -2,6 +2,7 @@ package com.setesh.flowers.feature.onboarding.ui
 
 import android.os.Bundle
 import android.view.View
+import coil.load
 import com.google.android.material.tabs.TabLayoutMediator
 import com.setesh.commons.binding.list.GenericListAdapter
 import com.setesh.commons.binding.onClick
@@ -51,6 +52,6 @@ class OnBoardingFragment: BaseFragment(R.layout.on_boarding_fragment) {
     ) {
         binding.title.setText(item.title)
         binding.description.setText(item.description)
-        binding.icon.setBackgroundResource(item.image)
+        binding.icon.load(item.image)
     }
 }

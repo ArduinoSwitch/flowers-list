@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import coil.load
+import coil.transform.RoundedCornersTransformation
+import com.setesh.commons.binding.onClick
 import com.setesh.commons.binding.viewBinding
 import com.setesh.commons.ui.BaseFragment
 import com.setesh.flowers.R
@@ -21,6 +23,14 @@ class DetailFragment: BaseFragment(R.layout.detail_fragment) {
     }
 
     private fun DetailFragmentBinding.bind() {
-        fullImage.load(args.url)
+        fullImage.load(args.detail.fullUrl) {
+            crossfade(true)
+            placeholder(R.drawable.local_florist_black_24dp)
+            transformations(RoundedCornersTransformation())
+        }
+        description.text = args.detail.description
+        size.text = getString(R.string.detail_size_placeholder, args.detail.width, args.detail.height)
+        likes.text = args.detail.likes.toString()
+        back.onClick { viewModel.onBackClick() }
     }
 }

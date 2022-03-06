@@ -8,6 +8,7 @@ val detailModule = module {
     viewModel {
         DetailViewModel(
             dispatchers = get(),
+            navigator = get(),
         )
     }
 }

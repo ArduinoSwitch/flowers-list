@@ -12,6 +12,7 @@ import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
 import com.setesh.flowers.databinding.FlowerItemBinding
 import com.setesh.flowers.databinding.MainFragmentBinding
+import com.setesh.flowers.feature.detail.ui.DetailArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment: BaseFragment(R.layout.main_fragment) {
@@ -41,7 +42,17 @@ class MainFragment: BaseFragment(R.layout.main_fragment) {
             placeholder(R.drawable.local_florist_black_24dp)
             transformations(RoundedCornersTransformation())
         }
-        root.onClick { viewModel.onPhotoClick(item.urls.full) }
+        root.onClick {
+            viewModel.onPhotoClick(
+                DetailArgs(
+                    description = item.description,
+                    width = item.width,
+                    height = item.height,
+                    likes = item.likes,
+                    fullUrl = item.urls.full,
+                )
+            )
+        }
     }
 
 }

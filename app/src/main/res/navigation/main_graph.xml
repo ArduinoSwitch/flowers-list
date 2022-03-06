@@ -50,8 +50,8 @@
             app:destination="@id/detail_fragment"
             >
             <argument
-                android:name="url"
-                app:argType="string"
+                android:name="detail"
+                app:argType="com.setesh.flowers.feature.detail.ui.DetailArgs"
                 />
         </action>
     </fragment>
@@ -63,8 +63,8 @@
         tools:layout="@layout/detail_fragment"
         >
         <argument
-            android:name="url"
-            app:argType="string"
+            android:name="detail"
+            app:argType="com.setesh.flowers.feature.detail.ui.DetailArgs"
             />
     </fragment>
 

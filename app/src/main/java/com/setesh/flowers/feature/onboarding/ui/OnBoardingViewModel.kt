@@ -28,7 +28,7 @@ class OnBoardingViewModel(
             ),
             TabUiModel(R.string.on_boarding_flower_detail_title,
                 R.string.on_boarding_flower_detail_body,
-                R.drawable.local_florist_black_24dp
+                R.drawable.detail_view
             ),
         )
 
