@@ -2,7 +2,11 @@ package com.setesh.flowers.feature.main.ui
 
 import com.setesh.commons.di.FrontDispatchers
 import com.setesh.commons.navigation.Navigator
+import com.setesh.commons.navigation.ScreenResult
+import com.setesh.commons.navigation.ScreenResultReceiver
 import com.setesh.commons.navigation.dialog.DialogData
+import com.setesh.commons.navigation.dialog.DialogResult
+import com.setesh.commons.response.UiApiError
 import com.setesh.commons.response.onFailure
 import com.setesh.commons.response.onSuccess
 import com.setesh.commons.ui.BaseViewModel
@@ -10,30 +14,67 @@ import com.setesh.domain.photos.GetPhotosUseCaseT
 import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
 import com.setesh.flowers.feature.detail.ui.DetailArgs
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
+
+private const val TRY_AGAIN = "try_again"
 
 class MainViewModel(
     dispatchers: FrontDispatchers,
     private val getPhotosUseCase: GetPhotosUseCaseT,
     private val navigator: Navigator,
-): BaseViewModel(dispatchers) {
+): BaseViewModel(dispatchers), ScreenResultReceiver {
 
     val flowersUiList = MutableStateFlow(emptyList<PhotoModel>())
+    val isLoading = MutableStateFlow(false)
 
     init {
-        scope.launch {
-            getPhotosUseCase(Unit).onSuccess {
-                Timber.i("$it")
-                flowersUiList.value = it
-            }.onFailure {
-                navigator.openDialog(DialogData.Informative(R.string.main_title, R.string.main_title))
-            }
-        }
+        loadData()
     }
 
     fun onPhotoClick(detail: DetailArgs) {
         navigator.goTo(MainFragmentDirections.navToDetail(detail))
+    }
+
+    private fun loadData() {
+        scope.launch {
+            isLoading.value = true
+            getPhotosUseCase(Unit).onSuccess {
+                flowersUiList.value = it
+            }.onFailure {
+                it.handleUiApiError()
+            }
+            isLoading.value = false
+        }
+    }
+
+    private fun UiApiError.handleUiApiError() = when(this) {
+        UiApiError.NoInternet -> navigator.openDialog(
+            DialogData.Informative(
+                R.string.dialog_no_connection_title,
+                R.string.dialog_no_connection_description
+            )
+        )
+        UiApiError.Generic -> navigator.openDialog(
+            DialogData.Binary(
+                title = R.string.dialog_generic_error_title,
+                description = R.string.dialog_generic_error_description,
+                positiveButton = R.string.dialog_generic_error_positive,
+                resultKey = TRY_AGAIN,
+            )
+        )
+    }
+
+    override val screenResultKeys: List<String> = listOf(TRY_AGAIN)
+
+    override fun onResult(key: String, result: ScreenResult) {
+        when (key) {
+            TRY_AGAIN -> {
+                result as DialogResult.Binary
+                if (result.isPositive) loadData()
+            }
+        }
     }
 }

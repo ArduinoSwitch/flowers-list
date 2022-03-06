@@ -14,6 +14,7 @@ import com.setesh.flowers.databinding.FlowerItemBinding
 import com.setesh.flowers.databinding.MainFragmentBinding
 import com.setesh.flowers.feature.detail.ui.DetailArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class MainFragment: BaseFragment(R.layout.main_fragment) {
 
@@ -26,7 +27,15 @@ class MainFragment: BaseFragment(R.layout.main_fragment) {
     }
 
     private fun MainFragmentBinding.bind() {
+        progress.bindIsVisible(viewModel.isLoading)
         flowersRecyclerView.bindGrid(viewModel.flowersUiList, getFlowersAdapter(), 2)
+        flowersRecyclerView
+            .setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                Timber.i("$oldScrollY")
+                Timber.i("$oldScrollX")
+                Timber.i("$scrollY")
+                Timber.i("$scrollX")
+            }
     }
 
     private fun getFlowersAdapter() = GenericListAdapter(

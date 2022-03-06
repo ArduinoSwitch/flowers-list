@@ -2,4 +2,9 @@
 <resources>
     <string name="dialog_positive_button">OK</string>
     <string name="dialog_negative_button">Cancel</string>
+    <string name="dialog_no_connection_title">Sin conexion</string>
+    <string name="dialog_no_connection_description">Parece que no tienes conexion a internet, intentalo mas tarde</string>
+    <string name="dialog_generic_error_title">Buuum!</string>
+    <string name="dialog_generic_error_description">Ha ocurrido un error, quieres volver a intentarlo?</string>
+    <string name="dialog_generic_error_positive">Volver a intentar</string>
 </resources>
