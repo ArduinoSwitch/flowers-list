@@ -9,4 +9,4 @@ package com.setesh.commons.binding.binders
  *
  * It is an aggregation of other interfaces to split utilities by concrete receivers (views).
  */
-interface DataBinder: ListBinders, TextViewBinders
+interface DataBinder: ListBinders, TextViewBinders, ViewBinders

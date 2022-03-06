@@ -62,6 +62,8 @@ dependencies {
     implementation di.koinFragment
     implementation di.koinScope
 
+    implementation database.datastorePreferences
+
     implementation libraries.timber
     implementation libraries.materialDesign
 }

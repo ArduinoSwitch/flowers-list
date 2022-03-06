@@ -9,6 +9,7 @@ val splashModule = module {
         SplashViewModel(
             dispatchers = get(),
             navigator = get(),
+            getOnBoardStateUseCase = get(),
         )
     }
 }

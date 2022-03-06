@@ -63,6 +63,5 @@ dependencies {
     kapt database.roomCompiler
     implementation database.roomRuntime
     implementation database.roomKtx
-    implementation database.datastorePreferences
     testImplementation database.roomKtx
 }
