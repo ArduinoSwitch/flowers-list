@@ -31,4 +31,8 @@ class MainViewModel(
             }
         }
     }
+
+    fun onPhotoClick(url: String) {
+        navigator.goTo(MainFragmentDirections.navToDetail(url))
+    }
 }

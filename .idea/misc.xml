@@ -20,6 +20,7 @@
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/ic_photo_camera_back_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/image_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/landscape_black_24dp.xml" value="0.3828125" />
+        <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/list_view.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/local_florist_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/portrait_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/selected_dot.xml" value="0.3828125" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/tonality_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/drawable/vrpano_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/layout/detail_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/layout/flower_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/layout/item_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Andrey/Documents/Repositorios/flowers-list/app/src/main/res/layout/main_fragment.xml" value="0.36666666666666664" />
