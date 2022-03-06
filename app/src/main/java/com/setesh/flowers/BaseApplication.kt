@@ -7,6 +7,8 @@ import com.setesh.data.network.di.apiModule
 import com.setesh.domain.di.domainModule
 import com.setesh.flowers.feature.detail.di.detailModule
 import com.setesh.flowers.feature.main.di.mainModule
+import com.setesh.flowers.feature.onboarding.di.boardingModule
+import com.setesh.flowers.feature.splash.di.splashModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
@@ -34,6 +36,8 @@ class BaseApplication: Application() {
                     apiModule,
                     dataModule,
                     domainModule,
+                    splashModule,
+                    boardingModule,
                 )
             )
         }

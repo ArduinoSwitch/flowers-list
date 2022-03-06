@@ -9,6 +9,7 @@ val mainModule = module {
         MainViewModel(
             dispatchers = get(),
             getPhotosUseCase = get(),
+            navigator = get(),
         )
     }
 }
