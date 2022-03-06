@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Flowers</string>
+
+    <!-- On Boarding Strings -->
+    <string name="on_boarding_welcome_title">Bienvenido</string>
+    <string name="on_boarding_welcome_body">Todo sobre las flores</string>
+    <string name="on_boarding_introduce_title">¿Que es?</string>
+    <string name="on_boarding_introduce_body">Tienes un listado de flores</string>
+    <string name="on_boarding_flower_detail_title">En detalle</string>
+    <string name="on_boarding_flower_detail_body">Puedes entrar dentro de cada imagen para ver el detalle</string>
 </resources>

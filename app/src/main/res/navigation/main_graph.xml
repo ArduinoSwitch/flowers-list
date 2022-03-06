@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/main_fragment"
-    >
+    app:startDestination="@id/splash_fragment">
+
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="com.setesh.flowers.feature.splash.ui.SplashFragment"
+        android:label="Splash Fragment"
+        tools:layout="@layout/splash_fragment"
+        >
+        <action
+            android:id="@+id/nav_to_main"
+            app:destination="@id/main_fragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/nav_to_on_boarding"
+            app:destination="@id/on_boarding_fragment"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/on_boarding_fragment"
+        android:name="com.setesh.flowers.feature.onboarding.ui.OnBoardingFragment"
+        android:label="On Boarding Fragment"
+        tools:layout="@layout/on_boarding_fragment"
+        />
 
     <fragment
         android:id="@+id/main_fragment"
         android:name="com.setesh.flowers.feature.main.ui.MainFragment"
         android:label="Main Fragment"
+        tools:layout="@layout/main_fragment"
         />
+
+    <action
+        android:id="@+id/open_dialog"
+        app:destination="@+id/dialog_graph"
+        >
+        <argument
+            android:name="data"
+            app:argType="com.setesh.commons.navigation.dialog.DialogData"
+            />
+    </action>
+
+    <include app:graph="@navigation/dialog_graph" />
 
 </navigation>
