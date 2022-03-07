@@ -9,6 +9,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import java.util.concurrent.TimeUnit
 
 private val json = Json {
     ignoreUnknownKeys = true
@@ -38,6 +39,9 @@ object ApiProvider {
             .addInterceptor(loggingInterceptor)
             .addInterceptor(networkConnectivityInterceptor)
             .addInterceptor(authorizationInterceptor)
+            .connectTimeout(TIME_CONNECTION, TimeUnit.SECONDS)
+            .readTimeout(TIME_CONNECTION, TimeUnit.SECONDS)
+            .writeTimeout(TIME_CONNECTION, TimeUnit.SECONDS)
             .build()
 
     fun provideLoggingInterceptor(isDebug: Boolean) = HttpLoggingInterceptor().apply {
@@ -48,3 +52,5 @@ object ApiProvider {
         }
     }
 }
+
+private const val TIME_CONNECTION = 10L

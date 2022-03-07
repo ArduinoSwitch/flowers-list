@@ -3,7 +3,7 @@
     <style name="Theme.Flowers" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="android:windowBackground">@color/background_color</item>
-        <item name="colorPrimary">@color/light_purple</item>
+        <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

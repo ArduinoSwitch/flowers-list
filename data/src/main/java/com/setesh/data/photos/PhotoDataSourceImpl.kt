@@ -11,7 +11,12 @@ class PhotoDataSourceImpl(
 ): PhotoDataSource {
     override suspend fun getPhotos(): MyResult<List<PhotoModel>, UiApiError> =
         ApiErrorHandling.run {
-            api.getPhotos(mapOf("query" to "flower")).results.toDomain()
+            api.getPhotos(
+                mapOf(
+                    "query" to "flower",
+                    "page" to "2"
+                )
+            ).results.toDomain()
         }.mapError {
             it.toBasicUi()
         }
