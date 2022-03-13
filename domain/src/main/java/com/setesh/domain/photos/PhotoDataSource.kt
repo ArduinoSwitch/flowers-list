@@ -4,5 +4,5 @@ import com.setesh.commons.response.MyResult
 import com.setesh.commons.response.UiApiError
 
 interface PhotoDataSource {
-    suspend fun getPhotos(): MyResult<List<PhotoModel>,  UiApiError>
+    suspend fun getPhotos(page: String): MyResult<List<PhotoModel>,  UiApiError>
 }
