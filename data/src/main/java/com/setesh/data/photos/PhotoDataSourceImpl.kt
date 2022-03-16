@@ -6,15 +6,19 @@ import com.setesh.domain.photos.PhotoDataSource
 import com.setesh.domain.photos.PhotoModel
 import com.setesh.domain.photos.UrlsModel
 
+private const val QUERY = "query"
+private const val QUERY_SUBJECT = "flower"
+private const val PAGE = "page"
+
 class PhotoDataSourceImpl(
     private val api: Api
 ): PhotoDataSource {
-    override suspend fun getPhotos(): MyResult<List<PhotoModel>, UiApiError> =
+    override suspend fun getPhotos(page: String): MyResult<List<PhotoModel>, UiApiError> =
         ApiErrorHandling.run {
             api.getPhotos(
                 mapOf(
-                    "query" to "flower",
-                    "page" to "2"
+                    QUERY to QUERY_SUBJECT,
+                    PAGE to page
                 )
             ).results.toDomain()
         }.mapError {
@@ -37,5 +41,6 @@ private fun List<PhotoDataModel>.toDomain() = map {
             small = it.urls.small,
             thumb = it.urls.thumb,
         ),
+        createDate = it.createdAt,
     )
 }

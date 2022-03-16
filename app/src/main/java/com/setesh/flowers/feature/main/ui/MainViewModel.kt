@@ -8,26 +8,24 @@ import com.setesh.commons.navigation.dialog.DialogData
 import com.setesh.commons.navigation.dialog.DialogResult
 import com.setesh.commons.response.UiApiError
 import com.setesh.commons.response.onFailure
-import com.setesh.commons.response.onSuccess
 import com.setesh.commons.ui.BaseViewModel
+import com.setesh.domain.photos.FetchMorePhotosUseCaseT
 import com.setesh.domain.photos.GetPhotosUseCaseT
-import com.setesh.domain.photos.PhotoModel
 import com.setesh.flowers.R
 import com.setesh.flowers.feature.detail.ui.DetailArgs
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 private const val TRY_AGAIN = "try_again"
 
 class MainViewModel(
     dispatchers: FrontDispatchers,
     private val getPhotosUseCase: GetPhotosUseCaseT,
+    private val fetchMorePhotosUseCase: FetchMorePhotosUseCaseT,
     private val navigator: Navigator,
 ): BaseViewModel(dispatchers), ScreenResultReceiver {
 
-    val flowersUiList = MutableStateFlow(emptyList<PhotoModel>())
+    val flowersUiList = getPhotosUseCase.invoke(Unit)
     val isLoading = MutableStateFlow(false)
 
     init {
@@ -41,11 +39,10 @@ class MainViewModel(
     private fun loadData() {
         scope.launch {
             isLoading.value = true
-            getPhotosUseCase(Unit).onSuccess {
-                flowersUiList.value = it
-            }.onFailure {
-                it.handleUiApiError()
-            }
+            fetchMorePhotosUseCase(Unit)
+                .onFailure {
+                    it.handleUiApiError()
+                }
             isLoading.value = false
         }
     }

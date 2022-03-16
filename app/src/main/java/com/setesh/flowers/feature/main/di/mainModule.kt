@@ -1,5 +1,6 @@
 package com.setesh.flowers.feature.main.di
 
+import com.setesh.domain.di.FETCH
 import com.setesh.domain.di.PHOTO_USE_CASE
 import com.setesh.domain.photos.GetPhotosUseCaseT
 import com.setesh.flowers.feature.main.ui.MainViewModel
@@ -12,6 +13,7 @@ val mainModule = module {
         MainViewModel(
             dispatchers = get(),
             getPhotosUseCase = get(named(PHOTO_USE_CASE)),
+            fetchMorePhotosUseCase = get(named(FETCH)),
             navigator = get(),
         )
     }

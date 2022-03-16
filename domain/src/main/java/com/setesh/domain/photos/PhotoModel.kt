@@ -7,6 +7,7 @@ data class PhotoModel(
     val color: String,
     val likes: Long,
     val description: String,
+    val createDate: String,
     val urls: UrlsModel,
 )
 

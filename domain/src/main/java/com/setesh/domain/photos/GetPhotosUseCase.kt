@@ -1,14 +1,13 @@
 package com.setesh.domain.photos
 
-import com.setesh.commons.response.MyResult
-import com.setesh.commons.response.UiApiError
-import com.setesh.commons.usecase.UseCaseSuspend
+import com.setesh.commons.usecase.UseCase
+import kotlinx.coroutines.flow.Flow
 
-typealias GetPhotosUseCaseT = UseCaseSuspend<Unit, MyResult<List<PhotoModel>, UiApiError>>
+typealias GetPhotosUseCaseT = UseCase<Unit, Flow<List<PhotoModel>>>
 
 class GetPhotosUseCase(
-    private val photoDataSource: PhotoDataSource,
+    private val photoDataSource: PhotosRepository,
 ):GetPhotosUseCaseT {
-    override suspend fun invoke(params: Unit): MyResult<List<PhotoModel>, UiApiError> =
+    override fun invoke(params: Unit): Flow<List<PhotoModel>> =
         photoDataSource.getPhotos()
 }

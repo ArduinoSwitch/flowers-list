@@ -2,6 +2,7 @@ package com.setesh.flowers
 
 import android.app.Application
 import com.setesh.commons.di.commonsModule
+import com.setesh.data.database.di.databaseModule
 import com.setesh.data.di.dataModule
 import com.setesh.data.network.di.apiModule
 import com.setesh.domain.di.domainModule
@@ -38,6 +39,7 @@ class BaseApplication: Application() {
                     domainModule,
                     splashModule,
                     boardingModule,
+                    databaseModule,
                 )
             )
         }
